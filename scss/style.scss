@@ -28,7 +28,7 @@ $secondary: #a0f669;
 }
 
 html {
-	// overflow-x: hidden;
+	overflow-x: hidden;
 }
 body {
 	font-family: $font-primary;
@@ -332,6 +332,8 @@ h1, h2, h3, h4, h5,
 
 
 .hero{
+	overflow: hidden;
+
 	h3.vr{
 		writing-mode: vertical-lr;
 	  transform: rotate(180deg);
@@ -398,6 +400,7 @@ h1, h2, h3, h4, h5,
 		position: relative;
 		height: 750px;
 		z-index: 0;
+		overflow: hidden;
 		.slider-item {
 			background-size: cover;
 			background-repeat: no-repeat;
@@ -405,6 +408,7 @@ h1, h2, h3, h4, h5,
 			height: 750px;
 			position: relative;
 			z-index: 0;
+			overflow: hidden;
 			@include media-breakpoint-down(lg){
 				background-position: center center !important;
 			}
@@ -420,14 +424,20 @@ h1, h2, h3, h4, h5,
 			.slider-text {
 				height: 750px;
 				z-index: 0;
+				overflow: hidden;
 				@include media-breakpoint-down(md){
 					text-align: center;
 				}
 				.one-third{
 					width: 60%;
 					position: relative;
-					// height: 650px;
+					height: 100%;
 					z-index: -1;
+					&.img {
+						background-size: cover;
+						background-repeat: no-repeat;
+						background-position: center top;
+					}
 					.overlay{
 						position: absolute;
 						top: 0;
@@ -460,7 +470,8 @@ h1, h2, h3, h4, h5,
 						left: 0;
 						bottom: 0;
 						right: 0;
-						width: 1200px;
+						width: 100%;
+						max-width: 1200px;
 						margin: 0 auto;
 					}
 					@include media-breakpoint-down(md){
@@ -881,6 +892,302 @@ h1, h2, h3, h4, h5,
 		letter-spacing: 3px;
 		text-transform: uppercase;
 	}
+	p {
+		font-size: 14px;
+		line-height: 1.7;
+		color: rgba(255,255,255,.75);
+	}
+}
+
+.education-row {
+	.resume-wrap {
+		min-height: 180px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+}
+
+#resume-section {
+	.resume-block {
+		margin-bottom: 5em;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.heading-section h2 {
+		color: $white;
+	}
+}
+
+.experience-timeline {
+	position: relative;
+	padding: 2em 0 2em 50px;
+	max-width: 900px;
+	margin: 0 auto;
+
+	&::before {
+		content: '';
+		position: absolute;
+		left: 16px;
+		top: 0;
+		bottom: 0;
+		width: 3px;
+		background: linear-gradient(to bottom, $primary, rgba($primary, 0.2));
+		border-radius: 3px;
+	}
+
+	.timeline-item {
+		position: relative;
+		margin-bottom: 3.5em;
+		padding-left: 10px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		.timeline-marker {
+			position: absolute;
+			left: -42px;
+			top: 6px;
+			width: 16px;
+			height: 16px;
+			background: $primary;
+			border: 3px solid $black;
+			border-radius: 50%;
+			z-index: 1;
+		}
+
+		.timeline-content {
+			margin-bottom: 0;
+			padding: 0;
+			background: transparent;
+
+			.date {
+				display: block;
+				font-weight: 900;
+				font-size: 22px;
+				color: $primary;
+				margin-bottom: 8px;
+			}
+
+			h3 {
+				font-size: 24px;
+				font-weight: 600;
+				margin-bottom: 6px;
+				color: $white;
+			}
+
+			.position {
+				font-size: 12px;
+				font-weight: 600;
+				letter-spacing: 3px;
+				text-transform: uppercase;
+				color: rgba(255,255,255,.6);
+			}
+
+			p {
+				font-size: 14px;
+				line-height: 1.8;
+				color: rgba(255,255,255,.75);
+			}
+		}
+	}
+}
+
+.paper-row {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	padding: 20px 30px;
+	margin-bottom: 15px;
+	background: rgba(255,255,255,.1);
+	border-radius: 5px;
+	border-left: 4px solid $primary;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	.paper-year {
+		flex: 0 0 60px;
+		font-weight: 900;
+		font-size: 20px;
+		color: $primary;
+	}
+
+	.paper-details {
+		flex: 1;
+
+		h2 {
+			font-size: 18px;
+			margin-bottom: 4px;
+
+			a {
+				color: $white;
+				@include transition(.3s);
+
+				&:hover {
+					color: $primary;
+					text-decoration: none;
+				}
+			}
+		}
+	}
+
+	.paper-link {
+		flex: 0 0 auto;
+	}
+
+	@media (max-width: 767px) {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}
+
+.cert-tree-horizontal {
+	position: relative;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 2em 0 3em;
+
+	.cert-trunk-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: auto 28px auto;
+		column-gap: 0.75rem;
+		row-gap: 0;
+		align-items: stretch;
+	}
+
+	.cert-branch {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-width: 0;
+	}
+
+	.cert-branch-top {
+		grid-row: 1;
+		justify-content: flex-end;
+
+		&:nth-child(1) { grid-column: 1; }
+		&:nth-child(2) { grid-column: 3; }
+	}
+
+	.cert-trunk-axis {
+		grid-row: 2;
+		grid-column: 1 / -1;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		column-gap: 0.75rem;
+		align-items: center;
+		min-height: 14px;
+
+		&::before {
+			content: '';
+			grid-column: 1 / -1;
+			grid-row: 1;
+			align-self: center;
+			height: 4px;
+			background: $primary;
+			border-radius: 2px;
+			z-index: 0;
+		}
+	}
+
+	.trunk-dot {
+		grid-row: 1;
+		justify-self: center;
+		width: 14px;
+		height: 14px;
+		background: $primary;
+		border: 3px solid $black;
+		border-radius: 50%;
+		flex-shrink: 0;
+		position: relative;
+		z-index: 1;
+
+		@for $i from 1 through 4 {
+			&:nth-child(#{$i}) {
+				grid-column: $i;
+			}
+		}
+	}
+
+	.branch-stem {
+		width: 3px;
+		height: 28px;
+		background: $primary;
+		flex-shrink: 0;
+	}
+
+	.cert-branch-bottom {
+		grid-row: 3;
+		justify-content: flex-start;
+
+		&:nth-child(4) { grid-column: 2; }
+		&:nth-child(5) { grid-column: 4; }
+	}
+
+	.cert-node {
+		width: 100%;
+		margin-bottom: 0;
+
+		h2 {
+			font-size: 20px;
+			line-height: 1.3;
+		}
+	}
+
+	@media (max-width: 991px) {
+		padding: 1em 0 2em;
+
+		.cert-trunk-grid {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+			padding-left: 1.5rem;
+			margin-left: 0.5rem;
+			border-left: 4px solid $primary;
+		}
+
+		.cert-trunk-axis {
+			display: none;
+		}
+
+		.cert-branch-top,
+		.cert-branch-bottom {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 1rem;
+			grid-column: unset !important;
+			grid-row: unset !important;
+
+			&::before,
+			&::after {
+				display: none;
+			}
+
+			.branch-stem {
+				width: 24px;
+				height: 3px;
+				flex-shrink: 0;
+			}
+
+			.cert-node {
+				flex: 1;
+			}
+		}
+
+		.cert-trunk-grid > .cert-branch:nth-child(1) { order: 1; }
+		.cert-trunk-grid > .cert-branch:nth-child(2) { order: 3; }
+		.cert-trunk-grid > .cert-branch:nth-child(4) { order: 2; }
+		.cert-trunk-grid > .cert-branch:nth-child(5) { order: 4; }
+	}
 }
 
 //SERVICES
@@ -906,6 +1213,7 @@ h1, h2, h3, h4, h5,
 	padding: 2em;
 	background: rgba(255,255,255,.1);
 	width: 100%;
+	cursor: default;
 	-webkit-box-shadow: 0px 20px 69px -27px rgba(0,0,0,0.17);
 	-moz-box-shadow: 0px 20px 69px -27px rgba(0,0,0,0.17);
 	box-shadow: 0px 20px 69px -27px rgba(0,0,0,0.17);
@@ -1126,6 +1434,98 @@ h1, h2, h3, h4, h5,
 		.text{
 			opacity: 1;
 		}
+	}
+}
+
+// PROJECT CARDS
+.project-card {
+	width: 100%;
+	margin-bottom: 30px;
+	background: rgba(255,255,255,.1);
+	padding: 30px;
+	@include border-radius(5px);
+	display: flex;
+	align-items: flex-start;
+	gap: 20px;
+	@include transition(.3s);
+
+	&:hover {
+		background: rgba(255,255,255,.15);
+	}
+
+	.project-card-icon {
+		flex-shrink: 0;
+		width: 72px;
+		height: 72px;
+		border-radius: 50%;
+		overflow: hidden;
+		border: 3px solid $primary;
+		background: rgba(0,0,0,.2);
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.project-card-content {
+		flex: 1;
+		min-width: 0;
+
+		h3 {
+			font-size: 20px;
+			margin-bottom: 8px;
+			color: $white;
+		}
+
+		.project-tags {
+			display: inline-block;
+			font-size: 11px;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			color: $primary;
+			margin-bottom: 12px;
+		}
+
+		p {
+			font-size: 14px;
+			line-height: 1.7;
+			margin-bottom: 0;
+			color: rgba(255,255,255,.75);
+		}
+	}
+}
+
+// SKILL TAGS
+.skill-category {
+	background: rgba(255,255,255,.1);
+	padding: 30px;
+	@include border-radius(5px);
+	height: 100%;
+
+	h3 {
+		font-size: 18px;
+		margin-bottom: 20px;
+		color: $white;
+	}
+
+	.skill-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
+	.skill-tag {
+		display: inline-block;
+		padding: 6px 14px;
+		background: rgba($primary, .2);
+		border: 1px solid rgba($primary, .4);
+		color: $white;
+		font-size: 13px;
+		font-weight: 500;
+		@include border-radius(20px);
 	}
 }
 
